@@ -70,3 +70,16 @@ body {
   padding: 5px 10px;
   background-color: lightskyblue;
 }
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  color: darkgray;
+}
+a:active{
+  color: gray;
+}
+a:visited{
+  color: black;
+}
