@@ -7,6 +7,7 @@ import Navigation from "./Navigation"
 
 const App = () => {
   const [savedList, setSavedList] = useState( [] );
+  const [movies, setMovies] = useState([])
 
   const addToSavedList = movie => {
     setSavedList( [...savedList, movie] );
@@ -16,9 +17,22 @@ const App = () => {
     <div>
       <Navigation />
       <SavedList list={savedList} />
-      <Route exact path="/" component={MovieList}/>
-      <Route path="/movies/:id" component={Movie}/>
-      
+      <Route 
+        exact path="/" 
+        render={props=>
+          <MovieList 
+            props={props} 
+            setMovies={setMovies} 
+            movies={movies}/>}
+      />
+      <Route 
+        path="/movies/:id" 
+        render={props=>
+          <Movie 
+            props={props} 
+            movies={movies}
+            addToSavedList={addToSavedList}/>}
+      />
     </div>
   );
 };
