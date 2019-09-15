@@ -36,7 +36,7 @@ const MovieDetails= props => {
   return ( <>
     
     <Link to={`/movies/${id}`}>
-      <div className="movie-header">
+      <div className="movie-card">
         <h2>{title}</h2>
       </div>
     </Link>
