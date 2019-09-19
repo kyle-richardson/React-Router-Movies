@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {Route} from "react-router-dom"
+import {Route, DefaultRoute} from "react-router-dom"
 import Movie from "./Movies/Movie"
 import MovieList from './Movies/MovieList'
 import SavedList from './Movies/SavedList';
@@ -10,7 +10,9 @@ const App = () => {
   const [movies, setMovies] = useState([])
 
   const addToSavedList = movie => {
-    setSavedList( [...savedList, movie] );
+    if(!savedList.some(e => e.title === `${movie.title}`)) {
+      setSavedList( [...savedList, movie] );
+    }
   };
 
   return (

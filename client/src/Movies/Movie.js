@@ -10,14 +10,10 @@ const Movie = props => {
 
   },[props.movies, id]);
   
-  const saveMovie = () => {
-    const addToSavedList = props.addToSavedList;
-    addToSavedList(movie)
-  }
 
     if(!movie)  return<div></div> 
     
-    return <MovieCard movie={movie} saveMovie={saveMovie}/> 
+    return <MovieCard movie={movie} saveMovie={props.addToSavedList}/> 
 }
 
 export default Movie;
