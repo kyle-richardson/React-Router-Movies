@@ -13,7 +13,8 @@ body {
   padding: 1rem;
   /* cursor: pointer; */
   position: relative;
-  margin: 1rem auto;
+  margin: 1rem 2rem;
+
 }
 
 .movie-director {
@@ -56,7 +57,7 @@ body {
 .save-button {
   position: absolute;
   top: 25px;
-  right: 25px;
+  right: 40px;
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
@@ -67,9 +68,19 @@ body {
   color: white;
 }
 
-.home-button {
+.home-button, .clear-button {
   padding: 5px 10px;
   background-color: lightskyblue;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.home-button:hover, .clear-button:hover {
+  background-color: darkblue;
+  color: white;
+}
+.home-button:hover a{
+  color: white;
 }
 
 a {
@@ -90,12 +101,8 @@ a {
   
 }
 
-a:hover {
-  color: darkgray;
-}
-a:active{
-  color: gray;
-}
-a:visited{
-  color: black;
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

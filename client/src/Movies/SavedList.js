@@ -18,15 +18,17 @@ const SavedList = props => (
         </NavLink>
       ))}
     </div>
-    <div className="home-button">
-      <Link to="/">Home</Link>
-    </div>
-    <div 
-      className="clear-button" 
-      onClick={()=> {
-        props.setSavedList([])
-      }}>
-        Clear
+    <div className="button-container">
+      <div className="home-button">
+        <Link to="/">Home</Link>
+      </div>
+      <div 
+        className="clear-button" 
+        onClick={()=> {
+          props.setSavedList([])
+        }}>
+          Clear
+      </div>
     </div>
   </div>
 );
