@@ -18,7 +18,7 @@ const App = () => {
   return (
     <div>
       <Navigation />
-      <SavedList list={savedList} />
+      <SavedList list={savedList} setSavedList={setSavedList}/>
       <Route 
         exact path="/" 
         render={props=>
