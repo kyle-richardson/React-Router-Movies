@@ -20,7 +20,7 @@ const MovieCard = props => {
           </div>
         ))}
       </div>
-      <div className="save-button" onClick={e=> props.saveMovie(current)}>Save</div>
+      <div className="save-button" onClick={()=> props.saveMovie(current)}>Save</div>
     </div>
   );
 };
