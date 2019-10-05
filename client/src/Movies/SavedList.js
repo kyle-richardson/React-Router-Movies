@@ -19,9 +19,11 @@ const SavedList = props => (
       ))}
     </div>
     <div className="button-container">
-      <div className="home-button">
-        <Link to="/">Home</Link>
-      </div>
+      <Link to="/">
+        <div className="home-button">
+          Home
+        </div>
+      </Link>
       <div 
         className="clear-button" 
         onClick={()=> {
