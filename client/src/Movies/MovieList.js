@@ -18,30 +18,30 @@ const MovieList = props => {
     }
     
     getMovies();
-  }, []);
+  }, [props.forceUpdate]);
+
+  const deleteMovie = id => {
+    axios
+      .delete(`http://localhost:5000/api/movies/${id}`)
+      .then(res=> props.setForceUpdate(!props.forceUpdate))
+      .catch(err=>console.log(err))
+  }
   
   return (
     <div className="movie-list">
-      {props.movies.map(movie => {
-        const temp = movie
-        return <MovieDetails key={movie.id} movie={temp}/>
+      {props.movies.map(mov => {
+        return (
+          <div>
+            <Link to={`/movies/${mov.id}`}>
+              <div className="movie-card"> 
+                <h2>{mov.title}</h2>
+              </div>
+            </Link>
+            <div onClick={()=>deleteMovie(mov.id)}>Delete</div>
+          </div>
+        )  
       })}
-      
     </div>
-  );
-}
-
-const MovieDetails= props => {
-  const {id, title} = props.movie
-  return ( <>
-    
-    <Link to={`/movies/${id}`}>
-      <div className="movie-card"> 
-        <h2>{title}</h2>
-      </div>
-    </Link>
-    
-    </>
   );
 }
 

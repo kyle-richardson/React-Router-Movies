@@ -3,11 +3,13 @@ import {Route} from "react-router-dom"
 import Movie from "./Movies/Movie"
 import MovieList from './Movies/MovieList'
 import SavedList from './Movies/SavedList';
+import UpdateMovie from "./Movies/UpdateMovie"
 import Navigation from "./Navigation"
 
 const App = () => {
   const [savedList, setSavedList] = useState( [] );
   const [movies, setMovies] = useState([])
+  const [forceUpdate, setForceUpdate] = useState(false)
 
   const addToSavedList = movie => {
     if(!savedList.some(e => e.title === `${movie.title}`)) {
@@ -25,7 +27,11 @@ const App = () => {
           <MovieList 
             props={props} 
             setMovies={setMovies} 
-            movies={movies}/>}
+            movies={movies}
+            forceUpdate = {forceUpdate}
+            setForceUpdate={setForceUpdate}
+          />}
+
       />
       <Route 
         path="/movies/:id" 
@@ -33,7 +39,17 @@ const App = () => {
           <Movie 
             props={props} 
             movies={movies}
-            addToSavedList={addToSavedList}/>}
+            addToSavedList={addToSavedList}
+          />}
+      />
+      <Route 
+        exact path="/update-movie/:id"
+        render={props=>
+          <UpdateMovie
+            props={props}
+            movies={movies}
+            setMovies={setMovies}
+          />}
       />
     </div>
   );

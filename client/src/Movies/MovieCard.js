@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom"
 
 const MovieCard = props => {
   const current = props.movie
@@ -21,6 +22,10 @@ const MovieCard = props => {
         ))}
       </div>
       <div className="save-button" onClick={()=> props.saveMovie(current)}>Save</div>
+      <Link to={`/update-movie/${current.id}`}>
+        <div>Edit</div>
+      </Link>
+        
     </div>
   );
 };
