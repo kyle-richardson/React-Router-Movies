@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import axios from 'axios';
+import {Link} from "react-router-dom"
+
 
 const MovieList = props => {
-  const [movies, setMovies] = useState([])
+  
   useEffect(() => {
     const getMovies = () => {
       axios
         .get('http://localhost:5000/api/movies')
         .then(response => {
-          setMovies(response.data);
+          props.setMovies(response.data);
         })
         .catch(error => {
           console.error('Server Error', error);
@@ -16,35 +18,29 @@ const MovieList = props => {
     }
     
     getMovies();
-  }, []);
+  }, [props.forceUpdate]);
+
+  const deleteMovie = id => {
+    axios
+      .delete(`http://localhost:5000/api/movies/${id}`)
+      .then(res=> props.setForceUpdate(!props.forceUpdate))
+      .catch(err=>console.log(err))
+  }
   
   return (
     <div className="movie-list">
-      {movies.map(movie => (
-        <MovieDetails key={movie.id} movie={movie} />
-      ))}
-    </div>
-  );
-}
-
-function MovieDetails({ movie }) {
-  const { title, director, metascore, stars } = movie;
-  return (
-    <div className="movie-card">
-      <h2>{title}</h2>
-      <div className="movie-director">
-        Director: <em>{director}</em>
-      </div>
-      <div className="movie-metascore">
-        Metascore: <strong>{metascore}</strong>
-      </div>
-      <h3>Actors</h3>
-
-      {stars.map(star => (
-        <div key={star} className="movie-star">
-          {star}
-        </div>
-      ))}
+      {props.movies.map(mov => {
+        return (
+          <div>
+            <Link to={`/movies/${mov.id}`}>
+              <div className="movie-card"> 
+                <h2>{mov.title}</h2>
+              </div>
+            </Link>
+            <div onClick={()=>deleteMovie(mov.id)}>Delete</div>
+          </div>
+        )  
+      })}
     </div>
   );
 }

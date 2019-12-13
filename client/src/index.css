@@ -11,9 +11,10 @@ body {
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
-  cursor: pointer;
+  /* cursor: pointer; */
   position: relative;
-  margin: 1rem auto;
+  margin: 1rem 2rem;
+
 }
 
 .movie-director {
@@ -27,7 +28,7 @@ body {
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
-  cursor: pointer;
+  /* cursor: pointer; */
   position: relative;
   margin: 1rem auto;
   width: 75%;
@@ -56,17 +57,52 @@ body {
 .save-button {
   position: absolute;
   top: 25px;
-  right: 25px;
+  right: 40px;
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
+  cursor: pointer;
 }
 .save-button:hover {
   background-color: green;
   color: white;
 }
 
-.home-button {
+.home-button, .clear-button {
   padding: 5px 10px;
   background-color: lightskyblue;
+  margin: 10px 0;
+  cursor: pointer;
+}
+
+.home-button:hover, .clear-button:hover {
+  background-color: darkblue;
+  color: white;
+}
+.home-button:hover a{
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.activeSavedButton {
+  background-color: lightblue;
+  padding: 20px 0px;
+}
+.saved-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
